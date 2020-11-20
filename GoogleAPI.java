@@ -12,7 +12,7 @@ public class GoogleAPI {
 	public void downloadMap(String location) {
 		try {
 			String imageURL="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyD94CvfcKAOHNvVYLPGE0Ez_5EPWET0_E0&center="
-					+URLEncoder.encode(location,"UTF-8")+"&zoom=15&size=612x612&scale=2";  //zoom값 크게하면 지도 확대 
+					+URLEncoder.encode(location,"UTF-8")+"&zoom=15&size=612x612&scale=2";  //zoom insert 16~20
 			URL url=new URL(imageURL);
 			InputStream is=url.openStream();
 			OutputStream os=new FileOutputStream(location);
