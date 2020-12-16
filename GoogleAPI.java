@@ -12,11 +12,11 @@ public class GoogleAPI {
 	public void downloadMap(String location) {
 		try {
 			String imageURL="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyD94CvfcKAOHNvVYLPGE0Ez_5EPWET0_E0&center="
-					+URLEncoder.encode(location,"UTF-8")+"&zoom=15&size=612x612&scale=2";  //zoom insert 16~20
+					+URLEncoder.encode(location,"UTF-8")+"&zoom=15&size=612x612&scale=2";  //zoom값 크게하면 지도 확대 
 			URL url=new URL(imageURL);
 			InputStream is=url.openStream();
 			OutputStream os=new FileOutputStream(location);
-			byte[] b=new byte[2048];
+			byte[] b=new byte[1024];
 			int length;
 			while((length=is.read(b))!=-1) {
 				os.write(b,0,length);
@@ -30,7 +30,7 @@ public class GoogleAPI {
 	}
 	
 	public ImageIcon getMap(String location) {
-		return new ImageIcon((new ImageIcon(location)).getImage().getScaledInstance(612, 612, java.awt.Image.SCALE_SMOOTH));
+		return new ImageIcon((new ImageIcon(location)).getImage().getScaledInstance(1024,800, java.awt.Image.SCALE_SMOOTH));
 		
 	}
 	
@@ -38,4 +38,7 @@ public class GoogleAPI {
 		File f=new File(fileName);
 		f.delete();
 	}
+	
+	
 }
+
